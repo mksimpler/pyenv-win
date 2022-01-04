@@ -22,7 +22,7 @@ Sub ShowHelp()
     WScript.Echo "Usage: pyenv update [--ignore]"
     WScript.Echo
     WScript.Echo "  --ignore  Ignores any HTTP/VBScript errors that occur during downloads."
-	WScript.Echo "  --local   Priority choose offline installer if possible."
+    WScript.Echo "  --local   Priority choose offline installer if possible."
     WScript.Echo
     WScript.Echo "Updates the internal database of python installer URL's."
     WScript.Echo
@@ -238,15 +238,15 @@ Sub SymanticQuickSort(arr, arrMin, arrMax)
 End Sub
 
 Sub main(arg)
-	Dim idx
+    Dim idx
     Dim optIgnore
-	Dim optLocal
-	
+    Dim optLocal
+    
     optIgnore = False
-	optLocal = False
-	
-	For idx = 0 To arg.Count - 1
-	    Select Case arg(idx)
+    optLocal = False
+    
+    For idx = 0 To arg.Count - 1
+        Select Case arg(idx)
             Case "--help"       ShowHelp
             Case "--ignore"     optIgnore = True
             Case "--local"      optLocal = True
@@ -313,33 +313,33 @@ Sub main(arg)
         If SymanticCompare(versPieces, minVers) Then
             installers2.Remove fileName
         ElseIf Len(versPieces(VRX_Web)) Then
-		    If optLocal Then
-				fileWeb = "python-"& JoinInstallString(Array( _
-					versPieces(VRX_Major), _
-					versPieces(VRX_Minor), _
-					versPieces(VRX_Patch), _
-					versPieces(VRX_Release), _
-					versPieces(VRX_RelNumber), _
-					versPieces(VRX_x64), _
-					versPieces(VRX_Web), _
-					versPieces(VRX_Ext) _
-				))
-				If installers2.Exists(fileWeb) Then _
-					installers2.Remove fileWeb
-			Else
-				fileNonWeb = "python-"& JoinInstallString(Array( _
-					versPieces(VRX_Major), _
-					versPieces(VRX_Minor), _
-					versPieces(VRX_Patch), _
-					versPieces(VRX_Release), _
-					versPieces(VRX_RelNumber), _
-					versPieces(VRX_x64), _
-					Empty, _
-					versPieces(VRX_Ext) _
-				))
-				If installers2.Exists(fileNonWeb) Then _
-					installers2.Remove fileNonWeb
-			End If
+            If optLocal Then
+                fileWeb = "python-"& JoinInstallString(Array( _
+                    versPieces(VRX_Major), _
+                    versPieces(VRX_Minor), _
+                    versPieces(VRX_Patch), _
+                    versPieces(VRX_Release), _
+                    versPieces(VRX_RelNumber), _
+                    versPieces(VRX_x64), _
+                    versPieces(VRX_Web), _
+                    versPieces(VRX_Ext) _
+                ))
+                If installers2.Exists(fileWeb) Then _
+                    installers2.Remove fileWeb
+            Else
+                fileNonWeb = "python-"& JoinInstallString(Array( _
+                    versPieces(VRX_Major), _
+                    versPieces(VRX_Minor), _
+                    versPieces(VRX_Patch), _
+                    versPieces(VRX_Release), _
+                    versPieces(VRX_RelNumber), _
+                    versPieces(VRX_x64), _
+                    Empty, _
+                    versPieces(VRX_Ext) _
+                ))
+                If installers2.Exists(fileNonWeb) Then _
+                    installers2.Remove fileNonWeb
+            End If
         End If
     Next
 
